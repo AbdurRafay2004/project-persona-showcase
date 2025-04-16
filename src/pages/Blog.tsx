@@ -3,6 +3,7 @@ import { ArrowRight, Calendar } from "lucide-react"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Link } from "react-router-dom"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollToTop } from "@/components/scroll-to-top"
@@ -65,19 +66,23 @@ const Blog = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.map((post) => (
                 <Card key={post.id} className="overflow-hidden h-full flex flex-col animate-fade-in">
-                  <div className="aspect-video relative overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
+                  <Link to={`/blog/${post.slug}`} className="block">
+                    <div className="aspect-video relative overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                  </Link>
                   <CardContent className="pt-6 flex-grow">
                     <div className="flex items-center text-sm text-muted-foreground mb-3 gap-2">
                       <Calendar className="h-4 w-4" />
                       <span>{post.date}</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+                    <Link to={`/blog/${post.slug}`} className="block">
+                      <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">{post.title}</h3>
+                    </Link>
                     <p className="text-muted-foreground">{post.excerpt}</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                       {post.tags.map((tag) => (
@@ -86,9 +91,11 @@ const Blog = () => {
                     </div>
                   </CardContent>
                   <CardFooter className="pt-0">
-                    <Button variant="ghost" size="sm" className="gap-2 hover:text-primary">
-                      Read More
-                      <ArrowRight className="h-4 w-4" />
+                    <Button variant="ghost" size="sm" className="gap-2 hover:text-primary" asChild>
+                      <Link to={`/blog/${post.slug}`}>
+                        Read More
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </Button>
                   </CardFooter>
                 </Card>

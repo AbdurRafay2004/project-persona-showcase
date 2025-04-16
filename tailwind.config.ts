@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -127,8 +128,40 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'fade-out': 'fade-out 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out'
-			}
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						maxWidth: '100%',
+						code: {
+							background: 'hsl(var(--muted))',
+							padding: '2px 4px',
+							borderRadius: '4px',
+							fontWeight: '500',
+						},
+						pre: {
+							background: 'hsl(var(--card))',
+							padding: '16px',
+							borderRadius: '8px',
+							overflow: 'auto',
+						},
+						'pre code': {
+							background: 'transparent',
+							padding: '0',
+							borderRadius: '0',
+						},
+						'h1, h2, h3, h4, h5, h6': {
+							marginTop: '2em',
+							marginBottom: '0.5em',
+							fontWeight: '600',
+						},
+					},
+				},
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require('@tailwindcss/typography'),
+	],
 } satisfies Config;

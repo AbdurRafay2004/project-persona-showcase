@@ -2,6 +2,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { PortfolioSection } from "@/components/sections/portfolio-section"
 
 const Portfolio = () => {
   return (
@@ -18,8 +19,7 @@ const Portfolio = () => {
               </p>
             </div>
             
-            {/* This section will use the existing portfolio components */}
-            {/* Import and use PortfolioSection component content here */}
+            <PortfolioSection />
           </div>
         </section>
       </main>
