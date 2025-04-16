@@ -27,8 +27,9 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window === "undefined") return defaultTheme
-    
+
     const storedTheme = localStorage.getItem(storageKey)
+    // Explicitly check if the stored theme is one of the allowed Theme types
     if (storedTheme === "dark" || storedTheme === "light" || storedTheme === "system") {
       return storedTheme as Theme
     }
