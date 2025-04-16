@@ -2,7 +2,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,13 +28,13 @@ export function Header() {
   }, [])
 
   const navigationItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Blog", href: "#blog" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Experience", path: "/experience" },
+    { name: "Projects", path: "/projects" },
+    { name: "Blog", path: "/blog" },
+    { name: "Contact", path: "/contact" },
   ]
 
   return (
@@ -54,12 +55,16 @@ export function Header() {
           <ul className="flex gap-6">
             {navigationItems.map((item) => (
               <li key={item.name}>
-                <a
-                  href={item.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                <Link
+                  to={item.path}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === item.path
+                      ? "text-foreground font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -87,13 +92,17 @@ export function Header() {
             <ul className="flex flex-col gap-4">
               {navigationItems.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="block py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
+                  <Link
+                    to={item.path}
+                    className={`block py-2 text-base font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-foreground font-semibold"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

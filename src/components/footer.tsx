@@ -22,22 +22,22 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+                <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
               </li>
               <li>
-                <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
+                <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">About</Link>
               </li>
               <li>
-                <a href="#portfolio" className="text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
+                <Link to="/portfolio" className="text-muted-foreground hover:text-foreground transition-colors">Portfolio</Link>
               </li>
               <li>
-                <a href="#experience" className="text-muted-foreground hover:text-foreground transition-colors">Experience</a>
+                <Link to="/experience" className="text-muted-foreground hover:text-foreground transition-colors">Experience</Link>
               </li>
               <li>
-                <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+                <Link to="/projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</Link>
               </li>
               <li>
-                <a href="#blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+                <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
               </li>
             </ul>
           </div>
