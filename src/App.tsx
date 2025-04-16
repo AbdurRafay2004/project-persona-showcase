@@ -17,13 +17,16 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Get the base URL for GitHub Pages
+const basename = document.querySelector('base')?.getAttribute('href') || '/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

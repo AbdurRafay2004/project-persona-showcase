@@ -1,3 +1,4 @@
+
 # Welcome to your Lovable project
 
 ## Project info
@@ -50,6 +51,27 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
+## GitHub Pages Deployment
+
+This project is configured for GitHub Pages deployment. To deploy:
+
+1. Push your code to GitHub
+2. In your GitHub repository, go to Settings > Pages
+3. Set the source to "GitHub Actions"
+4. GitHub will automatically build and deploy your site
+
+Alternatively, you can use the included deploy script:
+
+```sh
+# Make the script executable
+chmod +x deploy.sh
+
+# Run the deployment script
+./deploy.sh
+```
+
+Remember to update the script with your GitHub username and repository name.
+
 ## What technologies are used for this project?
 
 This project is built with:
@@ -71,3 +93,4 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
