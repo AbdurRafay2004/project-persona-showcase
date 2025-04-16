@@ -29,10 +29,10 @@ export function ThemeProvider({
     if (typeof window === "undefined") return defaultTheme
 
     const storedTheme = localStorage.getItem(storageKey)
-    if (storedTheme === "dark" || storedTheme === "light" || storedTheme === "system") {
-      return storedTheme as Theme
-    }
-    return defaultTheme
+    const isValidTheme = (theme: string | null): theme is Theme => 
+      theme === "dark" || theme === "light" || theme === "system"
+
+    return isValidTheme(storedTheme) ? storedTheme : defaultTheme
   })
 
   useEffect(() => {
